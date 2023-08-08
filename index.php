@@ -8,20 +8,18 @@ $endpoint = $_SERVER['REQUEST_URI'];
 
 // VAMOS A CREAR LA KODIGO-API
 
-// ENDPOINT - GET ALL BOOTCAMPS
-// ENDPINT - CREATE A BOOTCAMP
-// ENDPOINT - EDIT A BOOTCAMP
-// EDNPOINT - DELETE A BOOTCAMP
-
 switch ($endpoint) {
     // GET
     case '/api/v1/bootcamps':
+        http_response_code(200);
         echo json_encode([
             'message' => 'Get all bootcamps'
         ]);
         break;
+
     // POST
     case '/api/v1/bootcamps/create':
+    http_response_code(201);
     echo json_encode([
         'message' => 'Create bootcamps'
     ]);
@@ -29,6 +27,7 @@ switch ($endpoint) {
 
     //PUT
     case '/api/v1/bootcamps/update':
+        http_response_code(200);
         echo json_encode([
             'message' => 'Update bootcamps'
         ]);
@@ -36,8 +35,16 @@ switch ($endpoint) {
 
     //DELETE
     case '/api/v1/bootcamps/delete':
+        http_response_code(200);
         echo json_encode([
             'message' => 'Delete bootcamps'
+        ]);
+        break;
+    
+    default:
+        http_response_code(404);
+        echo json_encode([
+            'message' => 'Endpoint not found'
         ]);
         break;
 }
